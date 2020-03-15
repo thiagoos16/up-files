@@ -1,7 +1,10 @@
 const mongoose = require('mongoose');
 const aws = require('aws-sdk');
+const fs = require('fs');
+const path = require('path');
+const { promisify } = require('util'); // conversão, post multer usa callbacks
 
-const S3 = new was.S3();
+const S3 = new aws.S3();
 
 const PostSchema =  new mongoose.Schema({
     name: String, // assim tbm está certo, pois os campos não dependeram do usuário
@@ -33,7 +36,7 @@ PostSchema.pre('remove', function() {
             Key: this.key
         }).promise();
     } else {
-        
+        return promisify(fs.unlink)(path.resolve(__dirname, '..', '..', 'tmp', 'uploads', this.key));
     }
 });
 
