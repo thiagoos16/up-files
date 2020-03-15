@@ -1,7 +1,10 @@
 const express = require('express');
 const routes = express.Router();
+const multer = require('multer');
+const multerConfig = require('./config/multer');
 
-routes.get("/", (req, res) => {
+routes.post("/uploads", multer(multerConfig).single("file"), (req, res) => {
+    console.log(req.file);
     res.json({ "ok":"ok" }) 
 });
 
