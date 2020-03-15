@@ -10,10 +10,7 @@ const PostSchema =  new mongoose.Schema({
         type: String,
         required: true,
     },
-    url: {
-        type: String,
-        required: true,
-    },
+    url: String,
     createdAt: {
         type: Date,
         default: Date.now,

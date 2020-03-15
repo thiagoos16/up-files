@@ -6,7 +6,7 @@ const multerConfig = require('./config/multer');
 const Post = require('./models/Post');
 
 routes.post("/uploads", multer(multerConfig).single("file"), async(req, res) => {
-    const { originalname: name, size, filename: key } = req.file;
+    const { originalname: name, size, key, location: url = '' } = req.file;
 
     const post = await Post.create({
         // name: req.file.originalname,
@@ -15,7 +15,7 @@ routes.post("/uploads", multer(multerConfig).single("file"), async(req, res) => 
         name,
         size,
         key,
-        url: 'www.amazon.com',
+        url
     });
    
     return res.json(post)
