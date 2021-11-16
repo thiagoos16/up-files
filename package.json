@@ -20,7 +20,7 @@
   },
   "homepage": "https://github.com/thiagoos16/up-files#readme",
   "dependencies": {
-    "aws-sdk": "^2.639.0",
+    "aws-sdk": "^2.814.0",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
